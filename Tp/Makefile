@@ -1,10 +1,10 @@
 #Nome do programa
-TARGET = app
+TARGET = app8980
 
 #diretorios dos arquivos
 SRC = ./src
 OBJ = ./obj
-BIN = ./bin
+BIN = ./bin480
 
 #compilador
 CC = gcc

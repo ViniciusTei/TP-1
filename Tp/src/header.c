@@ -12,9 +12,10 @@ int* iniciaVetor(){
   vetor = (int *) malloc(sizeof(int) * TAM);
 
   for(i = 0; i < TAM; i++){
-    vetor[i] = rand() % 100;
+    vetor[i] = 1 + (rand() % 100);
+    //printf("%d ", vetor[i]);
   }
-
+  printf("\n");
   return vetor;
 }
 
@@ -47,8 +48,9 @@ void ordenaVetor(int *vet){
       if(vet[j] < vet[i]){
         aux = vet[i];
         vet[i] = vet[j];
-        vet[j] = vet[i];
+        vet[j] = aux;
       }
     }
   }
+
 }
