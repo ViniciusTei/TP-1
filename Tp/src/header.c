@@ -15,11 +15,13 @@ int* iniciaVetor(){
     vetor[i] = 1 + (rand() % 100);
     //printf("%d ", vetor[i]);
   }
-  printf("\n");
+  //printf("\n");
   return vetor;
 }
 
-int buscaSoma(int *S, int x){
+/* Resolve o problema usando busca binaria.
+ */
+int buscaBinaria(int *S, int x){
   int esq = 0;
   int dir = TAM - 1;
   int i, j;
@@ -39,18 +41,56 @@ int buscaSoma(int *S, int x){
   return FALSE;
 }
 
-/* Utiliza o algoritmo BubbleSort */
-void ordenaVetor(int *vet){
-  int i, j, aux;
+/* Resolve o problema usando força bruta.
+ */
+int resolveSoma(int *vet, int x){
+  int i, j;
 
-  for(i = 0; i < TAM-1; i++){
-    for(j = i+1; j < TAM; j++){
-      if(vet[j] < vet[i]){
-        aux = vet[i];
-        vet[i] = vet[j];
-        vet[j] = aux;
-      }
+  for(i = 0; i < TAM; i++){
+    for(j = 1; j < TAM; j++){
+      if(vet[i] + vet[j] == x)
+        return 1;
     }
   }
 
+  return 0;
+}
+
+/********** ALGORITMOS DE ORDENAÇÃO ***********/
+
+void selection_sort(int num[]) {
+  int i, j, min, aux;
+  for (i = 0; i < (TAM-1); i++)
+  {
+     min = i;
+     for (j = (i+1); j < TAM; j++) {
+       if(num[j] < num[min])
+         min = j;
+     }
+     if (num[i] != num[min]) {
+       aux = num[i];
+       num[i] = num[min];
+       num[min] = aux;
+     }
+  }
+}
+
+void shellSort(int *vet) {
+    int i , j , value;
+    int gap = 1;
+    while(gap < TAM) {
+        gap = 3*gap+1;
+    }
+    while ( gap > 1) {
+        gap /= 3;
+        for(i = gap; i < TAM; i++) {
+            value = vet[i];
+            j = i;
+            while (j >= gap && value < vet[j - gap]) {
+                vet[j] = vet [j - gap];
+                j = j - gap;
+            }
+            vet [j] = value;
+        }
+    }
 }

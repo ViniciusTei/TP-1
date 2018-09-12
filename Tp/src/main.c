@@ -12,7 +12,8 @@ int main (){
   S = iniciaVetor();
 
   t_ordena = clock();//start
-  ordenaVetor(S);
+  selection_sort(S);
+  //shellSort(S);
   t_ordena = clock() - t_ordena;//end
 
   /*for(int i = 0; i < TAM; i++){
@@ -21,11 +22,18 @@ int main (){
 
   printf("\n");*/
 
+  //recebe o valor de x
   printf("Entre com um valor x: ");
   scanf("%d", &x);
 
   t_exec = clock(); //start
-  if (buscaSoma(S, x)){
+  /*if (buscaBinaria(S, x)){
+    printf("Sim!\n");
+  }
+  else{
+    printf("Nao!\n");
+  }*/
+  if (resolveSoma(S, x)){
     printf("Sim!\n");
   }
   else{
