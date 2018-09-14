@@ -2,17 +2,17 @@
 
 int main (){
 
-  int *S;
+  int *vetorEntrada;
   int x;
 
   //variaveis para calculo do tempo
   clock_t t_exec, t_ordena;
   double time_exec, time_ordena;
 
-  S = iniciaVetor();
+  vetorEntrada = iniciaVetor();
 
   t_ordena = clock();//start
-  selection_sort(S);
+  selection_sort(vetorEntrada);
   //shellSort(S);
   t_ordena = clock() - t_ordena;//end
 
@@ -33,7 +33,7 @@ int main (){
   else{
     printf("Nao!\n");
   }*/
-  if (resolveSoma(S, x)){
+  if (resolveSoma(vetorEntrada, x)){
     printf("Sim!\n");
   }
   else{

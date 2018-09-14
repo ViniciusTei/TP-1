@@ -21,16 +21,16 @@ int* iniciaVetor(){
 
 /* Resolve o problema usando busca binaria.
  */
-int buscaBinaria(int *S, int x){
+int buscaBinaria(int *vet, int x){
   int esq = 0;
   int dir = TAM - 1;
   int i, j;
 
   while(esq < dir){
-    if(S[esq] + S[dir] == x){
+    if(vet[esq] + vet[dir] == x){
       return TRUE;
     }
-    else if (S[esq] + S[dir] < x){
+    else if (vet[esq] + vet[dir] < x){
       esq++;
     }
     else{
@@ -47,7 +47,7 @@ int resolveSoma(int *vet, int x){
   int i, j;
 
   for(i = 0; i < TAM; i++){
-    for(j = 1; j < TAM; j++){
+    for(j = i+1; j < TAM; j++){
       if(vet[i] + vet[j] == x)
         return 1;
     }
