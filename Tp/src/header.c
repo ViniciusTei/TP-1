@@ -49,11 +49,11 @@ int resolveSoma(int *vet, int x){
   for(i = 0; i < TAM; i++){
     for(j = i+1; j < TAM; j++){
       if(vet[i] + vet[j] == x)
-        return 1;
+        return TRUE;
     }
   }
 
-  return 0;
+  return FALSE;
 }
 
 /********** ALGORITMOS DE ORDENAÇÃO ***********/
@@ -75,22 +75,31 @@ void selection_sort(int num[]) {
   }
 }
 
-void shellSort(int *vet) {
-    int i , j , value;
-    int gap = 1;
-    while(gap < TAM) {
-        gap = 3*gap+1;
-    }
-    while ( gap > 1) {
-        gap /= 3;
-        for(i = gap; i < TAM; i++) {
-            value = vet[i];
-            j = i;
-            while (j >= gap && value < vet[j - gap]) {
-                vet[j] = vet [j - gap];
-                j = j - gap;
-            }
-            vet [j] = value;
-        }
-    }
+void heapsort(int a[], int n) {
+   int i = n / 2, pai, filho, t;
+   while(TRUE) {
+      if (i > 0) {
+          i--;
+          t = a[i];
+      } else {
+          n--;
+          if (n == 0) return;
+          t = a[n];
+          a[n] = a[0];
+      }
+      pai = i;
+      filho = i * 2 + 1;
+      while (filho < n) {
+          if ((filho + 1 < n)  &&  (a[filho + 1] > a[filho]))
+              filho++;
+          if (a[filho] > t) {
+             a[pai] = a[filho];
+             pai = filho;
+             filho = pai * 2 + 1;
+          } else {
+             break;
+          }
+      }
+      a[pai] = t;
+   }
 }

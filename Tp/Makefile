@@ -9,7 +9,7 @@ BIN = ./bin
 #compilador
 CC = gcc
 
-OBJS =	main.o header.o
+OBJS =	main.o header.o testes.o
 
 all: $(OBJS)
 	$(CC) $(OBJ)/*.o -o $(BIN)/$(TARGET)
@@ -19,6 +19,9 @@ header.o: $(SRC)/header.c
 
 main.o: $(SRC)/main.c
 	$(CC) -c $(SRC)/main.c -o $(OBJ)/main.o
+
+testes.o: $(SRC)/testes.c
+	$(CC) -c $(SRC)/testes.c -o $(OBJ)/testes.o
 
 run:
 	$(BIN)/$(TARGET)
