@@ -1,9 +1,9 @@
 #include "header.h"
 
-void fazTestes() {
+void fazTestes(int x) {
   int control = 0;
   int *vetIn;
-  int x, resBin, resFor;
+  int resBin, resFor;
 
   TAM = 500;
 
@@ -13,9 +13,10 @@ void fazTestes() {
   clock_t t_exec1, t_exec2, t_ordena;
   double time_exec1, time_exec2, time_ordena;
 
-  while (TAM <= 5000) {
+  while (TAM <= 100000) {
 
     printf("Tamanho:  %d\n", TAM);
+    printf("Valor de x: %d\n", x);
 
     if (control) {
       vetIn = iniciaVetor();
@@ -23,8 +24,6 @@ void fazTestes() {
       t_ordena = clock();//start
       heapsort(vetIn, TAM);
       t_ordena = clock() - t_ordena;//end
-
-      x = rand() % 200;
 
       t_exec1 = clock(); //start
       resBin = buscaBinaria(vetIn, x);
@@ -42,7 +41,7 @@ void fazTestes() {
       imprimeResultado(x, time_ordena, time_exec1, time_exec2, resBin, resFor);
 
       control = 0;
-      TAM += 1500;
+      TAM += 45500;
     }
     else {
       vetIn = iniciaVetor();
@@ -50,8 +49,6 @@ void fazTestes() {
       t_ordena = clock();//start
       selection_sort(vetIn);
       t_ordena = clock() - t_ordena;//end
-
-      x = rand() % 200;
 
       t_exec1 = clock(); //start
       resBin = buscaBinaria(vetIn, x);
@@ -75,7 +72,6 @@ void fazTestes() {
 
 void imprimeResultado(int x, double time_ordena, double time_exec1, double time_exec2, int resBin, int resFor) {
   if (resBin == 1 && resFor == 1) {
-    printf("Valor de x: %d\n", x);
     printf("Tempo gasto na ordenacao: %lfs\n", time_ordena);
     printf("Tempo resolucao busca binaria: %lfs\n", time_exec1);
     printf("Tempo resolucao froca bruta: %lfs\n", time_exec2);
